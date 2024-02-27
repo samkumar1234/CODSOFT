@@ -1,0 +1,42 @@
+def addition(a,b):
+    return a+b
+def subtraction(a,b):
+    return a-b
+def product(a,b):
+    return a*b
+def division(a,b):
+    return a//b
+def modulus(a,b):
+    return a%b
+
+#these functions used in another file by importing this file
+
+import Arithmetic as ar  #importing using import keyword
+
+while(True):
+    Application=input("Do You Want To Perform Or Not?")
+
+    if(Application == "ON"):
+        print("------------------------WELCOME TO CASIO-----------------------")
+        print("+ : ADDITION")
+        print("- : SUBTRACTION")
+        print("* : MULTIPLICATION")
+        print("/ : QUOTIENT")
+        print("% : MODULUS")
+        print("----------------------------------------------------------------")
+        print("Give Two Operands To Perform..")
+        x,y=map(int,input().split(" "))
+        s=input("Operation To Perform...")
+        if(s=="+"):
+            print(ar.addition(x,y))
+        elif(s=="-"):
+            print(ar.subtraction(x,y))
+        elif(s=="*"):
+            print(ar.product(x,y))
+        elif(s=="/"):
+            print(ar.division(x,y))
+        else:
+            print(ar.modulus(x,y))
+    else:
+        print("TURNED OFF...")
+        break #closes the loop Or apllication
