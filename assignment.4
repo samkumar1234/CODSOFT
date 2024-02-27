@@ -1,0 +1,98 @@
+import random
+print(">>>>>>>>>>>>>>>>>>>>>>>ROCK-PAPER-SCISSORS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+print("TERMS AND CONDITIONS:")
+
+print("1. THE MOVE YOU WANT TO MAKE SHOULD BE PROMPTED IN SMALL LETTERS...")
+print("2. ROCK, PAPER & SCISSORS ARE THE THREE MOVES YOU MAKE...")
+print("3. ROCK (VS) PAPER => 'PAPER WINS'")
+print("4. ROCK (VS) SCISSOR => 'SCISSOR WINS'")
+print("5. SCISSOR (VS) PAPER => 'SCISSOR WINS'")
+print("6. YOU CAN PLAY MANY ROUNDS UNTIL YOU WISH TO EXIT...")
+
+print("-------------------------------------------------------------------")
+
+Player1=0
+Comp=0
+r=input().split(",")
+
+while(True):
+    m1=input("Prompt rock / paper / scissors...") #PLAYER MOVE
+    
+    m2=''.join(random.sample(r,1)) # COMPUTER MOVE
+    
+    if(m1 == "rock" and m2 == "scissors"):
+        Player1+=1
+        print("You won..")
+        print("You palyed rock")
+        print("Computer played scissors")
+        print()
+        s=input("DO YOU WANT TO CONTINUE?..")
+        if(s != "YES"):
+            break
+            
+    elif(m1 == "rock" and m2 == "paper"):
+        Comp+=1
+        print("Computer won")
+        print("You played rock")
+        print("Computer played paper")
+        print()
+        s=input("DO YOU WANT TO CONTINUE?..")
+        if(s != "YES"):
+            break
+        
+    elif(m1 == "paper" and m2 == "rock"):
+        Player1+=1
+        print("You won..")
+        print("You played paper")
+        print("Computer played rock")
+        print()
+        s=input("DO YOU WANT TO CONTINUE?..")
+        if(s != "YES"):
+            break
+    
+    elif(m1 == "paper" and m2 == "scissors"):
+        Comp+=1
+        print("Computer won..")
+        print("You played paper")
+        print("Computer played scissor")
+        print()
+        s=input("DO YOU WANT TO CONTINUE?..")
+        if(s != "YES"):
+            break
+        
+    elif(m1 == "scissors" and m2 == "rock"):
+        Comp+=1
+        print("Computer won..")
+        print("You played scissors")
+        print("Computer played rock")
+        print()
+        s=input("DO YOU WANT TO CONTINUE?..")
+        if(s != "YES"):
+            break
+        
+    elif(m1 == "scissors" and m2 == "paper"):
+        Player1+=1
+        print("You won..")
+        print("You played scissors")
+        print("Computer played paper")
+        print()
+        s=input("DO YOU WANT TO CONTINUE?..")
+        if(s != "YES"):
+            break
+        
+    else:
+        Player1+=1
+        Comp+=1
+        print("It's a draw..")
+        print()
+        s=input("DO YOU WANT TO CONTINUE?..")
+        if(s != "YES"):
+            break
+
+if(Player1 > Comp):
+    print("Player1 won by difference of ",(Player1-Comp))
+elif(Comp > Player1):
+    print("Computer won by difference of ",(Comp-Player1))
+else:
+    print("The Game ends in a draw")
+
