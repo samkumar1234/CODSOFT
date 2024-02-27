@@ -1,0 +1,99 @@
+class Contact:
+    def __init__(self, name, phone, email, add):
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.add = add
+
+class Manager:
+    def __init__(self):
+        self.contacts = []
+
+    def add_contact(self, contact):
+        self.contacts.append(contact)
+
+    def view_contact_list(self):
+        if(len(self.contacts) == 0):
+            print("No Contacts Saved...")
+        else:
+           for i, contact in enumerate(self.contacts, start=1):
+               print(f"{i}.{contact.name} : {contact.phone}")
+
+    def search_contact(self, c):
+        found=[]
+        for cont in self.contacts:
+            if c.lower() in cont.name.lower() or c in cont.phone:
+                found.append(cont)
+        return found
+
+    def update_contact(self, c):
+        for cont in self.contacts:
+            if c.lower() in cont.name.lower() or c in cont.phone:
+                print("Enter Details:")
+                cont.name = input("Name: ")
+                cont.phone = input("Phone Number: ")
+                cont.email = input("Email: ")
+                cont.add = input("Address: ")
+                print("Updated successfully...")
+                return
+        print("Contact not found....")
+
+    def delete_contact(self,c):
+        for cont in self.contacts:
+            if c.lower() in cont.name.lower() or c in cont.phone:
+                self.contacts.remove(cont)
+                print("Deleted successfully...")
+                return
+        print("Contact not found...")
+
+def main():
+    manager = Manager()
+
+    while True:
+        print("---------------------CONTACT BOOK--------------------------")
+        print("1. Add Contact")
+        print("2. View Contact List")
+        print("3. Search Contact")
+        print("4. Update Contact")
+        print("5. Delete Contact")
+        print("6. Exit")
+        ch = input("Please enter your choice: ")
+
+        if ch == '1':
+            name = input("Name: ")
+            phone = input("Phone Number: ")
+            email = input("Email: ")
+            add = input("Address: ")
+            manager.add_contact(Contact(name, phone, email, add))
+
+        elif ch == '2':
+            print("-------------Contact List----------------")
+            manager.view_contact_list()
+
+        elif ch == '3':
+            query = input("Enter the Contact / Phone number: ")
+            found = manager.search_contact(query)
+            if found:
+                print("Contacts Found...")
+                for cont in found:
+                    print(f"{cont.name} : {cont.phone}")
+            else:
+                print("No Contacts found...")
+
+        elif ch == '4':
+            con = input("Enter the Contact: ")
+            manager.update_contact(con)
+
+        elif ch == '5':
+            con = input("Enter the Contact : ")
+            manager.delete_contact(con)
+
+        elif ch == '6':
+            print("Exit...")
+            break
+
+        else:
+            print("Invalid choice...")
+
+if __name__ == "__main__":
+    main()
