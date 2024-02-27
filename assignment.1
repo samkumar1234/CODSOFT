@@ -1,0 +1,47 @@
+class CheckList:
+    To_Do_List=[]
+
+    def Add_To_ToDoList(self):
+       Activity=input("Enter your today's task...")
+       self.To_Do_List.append(Activity)
+       print(f"Task '{Activity}' added to list...")  #functions performs adding task removing task and displaying list
+
+    def Remove_From_ToDoList(self):
+        try:
+          Remove=int(input("Enter Task number..."))
+          self.To_Do_List.pop(Remove)
+        except ValueError:
+          print("Invalid Task Number...")
+        except IndexError:
+          print("Task Number is not present in To_Do_List...")
+
+    def Display_ToDoList(self):
+        if len(self.To_Do_List) != 0:
+            for i, task in enumerate(self.To_Do_List):
+                print(f"#{i}. {task}")
+        else:
+            print("No Activities present in the To_Do_List...")
+        
+
+c=CheckList()
+print("----------------------To_Do_List-----------------------")
+print("1. Add Activity in To_Do_List...")
+print("2. Remove Activity in To_Do_List...")
+print("3. Display Entire To_Do_List...")
+print("4. Check the List after some time...")
+
+while(True):
+    task_to_perform=int(input("Enter Task no..."))
+
+    if(task_to_perform == 1):
+      c.Add_To_ToDoList()
+
+    if(task_to_perform == 2):
+      c.Remove_From_ToDoList()
+
+    if(task_to_perform == 3):
+      c.Display_ToDoList()
+
+    if(task_to_perform == 4):
+       print("Check Out Later...")
+       break
